@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page(Login)</title>
+    <style>
+        body{
+            color: lavender;
+            background-color: rgb(12, 165, 76);
+            font-weight: bolder;
+        }
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        td, th {
+            border: 1px solid black;
+            text-align: left;
+            padding: 8px;
+        }
+        tr:nth-child(even) {
+            color: black;
+            background-color: whitesmoke;
+        }
+    </style>
+</head>
+
+
+<body>
+    <h1>Welcome</h1>
+
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li style="color:red;">{{message}}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <form action="/register" method="post">
+        {% csrf_token %}
+        <p>Name: <input type="text" name="name" id=""></p>
+        <p>Username: <input type="text" name="username" id=""></p>
+        <p>Password: <input type="password" name="pw" id=""></p>
+        <p>Confirm Password: <input type="password" name="cpw" id=""></p>
+        <p><input type="submit" value="Register"></p>
+    </form>
+    <h1>Login</h1>
+    <form action="/login" method="post">
+        {% csrf_token %}
+        <p>Username: <input type="text" name="username" id=""></p>
+        <p>Password: <input type="password" name="pw" id=""></p>
+        <p><input type="submit" value="Login"></p>
+    </form>
+
+</body>
+</html>

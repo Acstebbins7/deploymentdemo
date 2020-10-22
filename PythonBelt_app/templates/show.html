@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Page</title>
+    <style>
+        body{
+            color: lavender;
+            background-color: rgb(12, 165, 76);
+            font-weight: bolder;
+        }
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        td, th {
+            border: 1px solid black;
+            text-align: left;
+            padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+            color: black;
+            background-color: whitesmoke;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{wishShow.destination}}</h1>
+    <h3>Planned By: {{wishShow.added_by.name}}</h3>
+    <h3>Travel Start Date: {{wishShow.travelStart}}</h3>
+    <h3>Travel End Date: {{wishShow.travelEnd}}</h3>
+    <h3>Description: {{wishShow.description}}</h3>
+    
+    <h3>Other User's that are joining the trip:</h3>
+    <ul>
+        {% for i in wishLikes %}
+        <li>{{i.username}}</li>
+        {% endfor %}
+    </ul>
+    <a href="/dashboard">Home</a>
+    <a href="/logout">Logout</a>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Trip Page</title>
+    <style>
+        body{
+            color: lavender;
+            background-color: rgb(12, 165, 76);
+            font-weight: bolder;
+        }
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        td, th {
+            border: 1px solid black;
+            text-align: left;
+            padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+            color: black;
+            background-color: whitesmoke;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add A Trip</h1>
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li style="color:red;">{{message}}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <form action="/processItem" method="post">
+        {% csrf_token %}
+        <h3>Destination:</h3>
+        <input type="text" name="destination">
+
+        <h3>Description:</h3>
+        <input type="text" name="description">
+        
+        <h3>Travel Date From:</h3>
+        <input type="date" name="travelStart">
+
+        <h3>Travel Date To:</h3>
+        <input type="date" name="travelEnd">
+
+        <button type="submit">Add</button>
+    </form> 
+    <a href="/dashboard">Home</a>
+    <a href="/logout">Logout</a>
+</body>
+</html>

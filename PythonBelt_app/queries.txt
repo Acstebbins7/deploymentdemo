@@ -1,0 +1,5 @@
+Wish.objects.create(destination="China", travelStart="2015-05-26", travelEnd="2015-05-30", added_by="Jack")
+
+Wish.objects.create(destination="Germany", travelStart="2015-02-01", travelEnd="2015-02-21", added_by="Jack")
+
+Wish.objects.create(destination="Alaska", travelStart="2015-11-16", travelEnd="2015-12-16", added_by=

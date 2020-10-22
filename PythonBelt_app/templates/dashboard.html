@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body{
+            color: lavender;
+            background-color: rgb(12, 165, 76);
+            font-weight: bolder;
+        }
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        td, tr {
+            border: 1px solid black;
+            text-align: left;
+            padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+            color: black;
+            background-color: whitesmoke;
+        }
+    </style>
+</head>
+<body>
+    <h1>Success! Welcome, {{loggedInUser.name}}</h1>
+    <table>
+        <h3>User Trip Schedules:</h3>
+        <tr>
+            <th>Destination</th>
+            <th>Travel Start Date</th>
+            <th>Travel End Date</th>
+            <th>Plan</th>
+            <th></th>
+        </tr>
+        {% for items in likes %}
+        <tr>
+            <td><a href="/wish_items/{{items.id}}">{{items.destination}}</a></td>
+            <td>{{items.travelStart}}</td>
+            <td>{{items.travelEnd}}</td>
+            <td>{{items.description}}</td>
+            <td>
+                <a href="/removeWish/{{items.id}}">Remove from my Trip List</a>
+                {% if loggedInUser == items.added_by %}
+                    <a href="/deleteWish/{{items.id}}">Delete</a>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <table>
+        <h3>Other Users Travel Plans:</h3>
+        <tr>
+            <th>Name</th>
+            <th>Destination</th>
+            <th>Travel Start Date</th>
+            <th>Travel End Date</th>
+            <th>Do You Want to Join?</th>
+        </tr>
+        {% for items in nolike %}
+        <tr>
+            <td>{{items.added_by.name}}</td>
+            <td><a href="/wish_items/{{items.id}}">{{items.destination}}</a></td>
+            <td>{{items.travelStart}}</td>
+            <td>{{items.travelEnd}}</td>
+            <td>
+                <a href="/wishAdd/{{items.id}}">Join</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/logout">Logout</a>
+    <a href="/"></a>
+    <a href="/wish_items/create"><button>Add Trip</button></a>
+</body>
+</html>
+
+
+
+</body>
+</html>
